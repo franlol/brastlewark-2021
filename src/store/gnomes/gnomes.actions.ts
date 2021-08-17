@@ -8,7 +8,7 @@ export const getGnomesFromApi = () => {
       dispatch(setIsLoading(true));
       const data = await getGnomes();
 
-      if (data) dispatch(setData(data));
+      if (data) dispatch(setData(data.Brastlewark));
 
     } catch (error) {
       console.log('Error in getGnomesFromApi()', error as Error);

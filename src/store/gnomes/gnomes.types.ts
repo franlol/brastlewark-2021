@@ -15,9 +15,11 @@ export type THairColor = string; // 'red' | 'black'... TODO CHECK
 export type TProfession = string;
 
 export type TGnomesState = {
-  Brastlewark: {
-    data: Array<TGnome> | null;
-    isLoading: boolean;
-    error: string | null;
-  };
+  data: Array<TGnome> | null;
+  isLoading: boolean;
+  error: string | null;
+}
+
+export type TGnomesResponse = {
+  Brastlewark: Array<TGnome>;
 }
