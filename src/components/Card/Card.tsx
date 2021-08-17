@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { TGnome } from '../../store/gnomes/gnomes.types';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -19,6 +20,17 @@ const useStyles = makeStyles({
   },
   content: {
     height: 140
+  },
+  link: {
+    color: '#3f51b5',
+    textDecoration: 'none',
+    fontFamily: 'Roboto',
+    fontSize: '0.8125rem',
+    fontWeight: 500,
+    lineHeight: 1.75,
+    '&:hover': {
+      textDecoration: 'underline'
+    }
   }
 });
 
@@ -55,9 +67,10 @@ export default function MediaCard(props: Props) {
         <Button size="small" color="primary">
           Add to favs
         </Button>
-        <Button size="small" color="primary">
-          Details
-        </Button>
+        <Link className={classes.link} to={`/gnome/${gnome.id}`} >
+          DETAILS
+        </Link>
+
       </CardActions>
     </Card>
   );
