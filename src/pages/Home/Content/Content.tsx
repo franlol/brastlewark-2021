@@ -5,29 +5,33 @@ import { useGnomes } from "../../../hooks/useGnomes";
 import { TStore } from "../../../store/store";
 
 import { CircularProgress } from "@material-ui/core";
-import { TGnome } from "../../../store/gnomes/gnomes.types";
 
 const Content = () => {
   const {
     pagination: { page, PER_PAGE },
-    search: { gnomesList }
+    gnomesList
   } = useSelector((state: TStore) => state.utils)
 
   const {
     isLoading: gnomesIsLoading,
+    getGnomeByName
   } = useGnomes();
 
-  const paginatedGnomes = (gnomesList).slice((page * PER_PAGE) - PER_PAGE, page * PER_PAGE)
+  const gnomes = gnomesList.map(gnome => getGnomeByName(gnome));
+
+  const paginatedGnomes = (gnomes).slice((page * PER_PAGE) - PER_PAGE, page * PER_PAGE)
 
   return (
     <>
       {gnomesIsLoading && <CircularProgress />}
 
       {paginatedGnomes.map((gnome, index) => {
-        return <Card
+        if (gnome) return <Card
           gnome={gnome}
           key={`gnome-${index}`}
         />
+        
+        return null;
       })}
 
     </>

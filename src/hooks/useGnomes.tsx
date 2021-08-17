@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getGnomesFromApi } from "../store/gnomes/gnomes.actions";
@@ -11,10 +11,14 @@ export const useGnomes = () => {
 
   useEffect(() => {
     !gnomes.data?.length && dispatch(getGnomesFromApi());
-    dispatch(setSearchGnomesList(gnomes.data || []));
+    dispatch(setSearchGnomesList((gnomes.data || []).map(gnome => gnome.name)));
   }, [dispatch, gnomes]);
 
-  const getGnomeByName = (name: string) => gnomes.data?.find(gnome => gnome.name === name);
+  const getGnomeByName = useCallback((name: string) => {
+    return (gnomes.data || []).find(gnome => gnome.name === name)
+
+  }, [gnomes]
+  )
 
   return { ...gnomes, getGnomeByName };
 }

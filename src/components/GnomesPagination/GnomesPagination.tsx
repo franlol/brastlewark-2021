@@ -8,13 +8,12 @@ import gnomesPaginationStyles from './gnomesPagination.styles';
 
 const GnomesPagination = () => {
   const classes = gnomesPaginationStyles();
-
   const dispatch = useDispatch();
+
   const {
     pagination: { page },
-    search: { gnomesList }
+    gnomesList
   } = useSelector((state: TStore) => state.utils);
-
 
   const handlePaginationChange = (_: any, page: number) => dispatch(setPage(page))
 

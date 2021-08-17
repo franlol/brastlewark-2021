@@ -22,9 +22,12 @@ export const Search = () => {
 
     dispatch(setSearchValue(value));
     dispatch(setPage(1));
-    dispatch(setSearchGnomesList(value
-      ? (gnomes || []).filter(gnome => gnome.name.includes(value))
-      : (gnomes || [])
+    dispatch(setSearchGnomesList(
+      (value
+        ? (gnomes || [])
+          .filter(gnome => gnome.name.toLowerCase().includes(value.toLowerCase()) && gnome.name)
+        : (gnomes || []))
+        .map(gnome => gnome.name)
     ));
   }
 
