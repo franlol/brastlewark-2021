@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import gnomesReducers from './gnomes/gnomes.slice';
+import utilsReducers from './utils/utils.slice';
 
 export const store = configureStore({
   reducer: {
-    gnomes: gnomesReducers
+    gnomes: gnomesReducers,
+    utils: utilsReducers
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
