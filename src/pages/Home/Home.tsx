@@ -1,10 +1,11 @@
-import { Box } from '@material-ui/core';
+import { useEffect } from 'react';
 
 import { useGnomes } from '../../hooks/useGnomes';
 import GnomesPagination from '../../components/GnomesPagination/GnomesPagination';
 import Content from './Content/Content';
-import { useEffect } from 'react';
 import Wrapper from '../../components/Wrapper/Wrapper';
+
+import { Box } from '@material-ui/core';
 
 export const Home = () => {
   const {

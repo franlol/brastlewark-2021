@@ -1,22 +1,12 @@
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import { TGnome } from '../../store/gnomes/gnomes.types';
 import { Link } from 'react-router-dom';
 
-import cardStyles from './cardStyles';
-import { useDispatch } from 'react-redux';
-import { addFavourite } from '../../store/utils/utils.slice';
+import { TGnome } from '../../store/gnomes/gnomes.types';
 import FavouriteButton from '../FavouriteButton/FavouriteButton';
 
-type Props = {
-  gnome: TGnome
-}
-export default function MediaCard(props: Props) {
+import cardStyles from './cardStyles';
+import { Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@material-ui/core';
+
+export default function MediaCard(props: { gnome: TGnome }) {
   const { gnome } = props;
   const classes = cardStyles();
 

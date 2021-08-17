@@ -1,8 +1,10 @@
-import { Button } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux';
-import { TGnome } from '../../store/gnomes/gnomes.types';
+
 import { TStore } from '../../store/store';
 import { addFavourite, delFavourite } from '../../store/utils/utils.slice';
+
+import { Button } from '@material-ui/core'
+import { TGnome } from '../../store/gnomes/gnomes.types';
 
 const FavouriteButton = (props: { gnome: TGnome }) => {
   const { gnome } = props;

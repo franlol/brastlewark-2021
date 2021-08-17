@@ -1,4 +1,10 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import { Search } from './Search/Search';
+import { TStore } from '../../store/store';
+
 import {
   AppBar,
   Toolbar,
@@ -8,14 +14,8 @@ import {
   MenuItem,
   Menu,
 } from '@material-ui/core';
-import { useLocation } from 'react-router-dom'
-
 import { Favorite, MoreVert } from '@material-ui/icons';
 import navbarStyles from './navbarStyles';
-import { Search } from './Search/Search';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { TStore } from '../../store/store';
 
 export default function PrimarySearchAppBar() {
   const classes = navbarStyles();

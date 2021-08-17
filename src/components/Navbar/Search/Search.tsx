@@ -1,13 +1,13 @@
 import { ChangeEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { useGnomes } from '../../../hooks/useGnomes';
 import { TStore } from '../../../store/store';
 import { setSearchGnomesList, setSearchValue, setPage } from '../../../store/utils/utils.slice';
 
 import { InputBase } from '@material-ui/core'
 import { Search as SearchIcon } from '@material-ui/icons';
 import navbarStyles from '../navbarStyles';
-import { useGnomes } from '../../../hooks/useGnomes';
 
 export const Search = () => {
   const { value } = useSelector((state: TStore) => state.utils.search);

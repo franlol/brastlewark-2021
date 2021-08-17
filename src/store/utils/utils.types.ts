@@ -1,5 +1,3 @@
-import { TGnome } from "../gnomes/gnomes.types";
-
 export type TUtilsState = {
   gnomesList: Array<string>;
   pagination: {
