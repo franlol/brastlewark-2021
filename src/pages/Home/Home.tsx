@@ -1,11 +1,11 @@
 import { Box, Container } from '@material-ui/core';
-
 import PrimarySearchAppBar from '../../components/Navbar/Nabar';
 
 import { useGnomes } from '../../hooks/useGnomes';
 import GnomesPagination from '../../components/GnomesPagination/GnomesPagination';
 import Content from './Content/Content';
 import { useEffect } from 'react';
+import Wrapper from '../../components/Wrapper/Wrapper';
 
 export const Home = () => {
   const { error: gnomesError, fetchGnomes } = useGnomes();
@@ -17,9 +17,7 @@ export const Home = () => {
   if (gnomesError) return <p>Error..</p>;
 
   return (
-    <Container maxWidth="lg">
-      <PrimarySearchAppBar />
-
+    <Wrapper>
       <Box display="flex" flexWrap='wrap' justifyContent='space-around'>
         <Content />
       </Box>
@@ -27,7 +25,7 @@ export const Home = () => {
       <Box display="flex" flexWrap='wrap' justifyContent='space-around'>
         <GnomesPagination />
       </Box>
-    </Container>
+    </Wrapper>
   )
 }
 
