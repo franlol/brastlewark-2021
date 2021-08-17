@@ -10,6 +10,8 @@ export default makeStyles((theme: Theme) =>
     },
     title: {
       display: 'none',
+      color: 'white',
+      textDecoration: 'none',
       [theme.breakpoints.up('sm')]: {
         display: 'block',
       },

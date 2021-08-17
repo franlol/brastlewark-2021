@@ -10,36 +10,14 @@ import Typography from '@material-ui/core/Typography';
 import { TGnome } from '../../store/gnomes/gnomes.types';
 import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles({
-  root: {
-    width: 345,
-    margin: '20px 5px'
-  },
-  media: {
-    height: 140,
-  },
-  content: {
-    height: 140
-  },
-  link: {
-    color: '#3f51b5',
-    textDecoration: 'none',
-    fontFamily: 'Roboto',
-    fontSize: '0.8125rem',
-    fontWeight: 500,
-    lineHeight: 1.75,
-    '&:hover': {
-      textDecoration: 'underline'
-    }
-  }
-});
+import cardStyles from './cardStyles';
 
 type Props = {
   gnome: TGnome
 }
 export default function MediaCard(props: Props) {
   const { gnome } = props;
-  const classes = useStyles();
+  const classes = cardStyles();
 
   return (
     <Card className={classes.root}>
@@ -54,11 +32,11 @@ export default function MediaCard(props: Props) {
             {gnome.name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Friends: {gnome.friends.join(', ')}
+            <strong>Friends:</strong> {gnome.friends.join(', ')}
           </Typography>
 
           <Typography variant="body2" color="textSecondary" component="p">
-            Professions: {gnome.professions.join(', ')}
+            <strong>Professions:</strong> {gnome.professions.join(', ')}
           </Typography>
         </CardContent>
       </CardActionArea>

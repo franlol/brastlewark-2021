@@ -19,6 +19,9 @@ export const useGnomes = () => {
     return (gnomes.data || []).find(gnome => gnome.name === name)
   }, [gnomes]);
 
+  const getGnomeById = useCallback((id: number) => {
+    return (gnomes.data || []).find(gnome => gnome.id === id)
+  }, [gnomes]);
 
-  return { ...gnomes, getGnomeByName, fetchGnomes };
+  return { ...gnomes, getGnomeByName, getGnomeById, fetchGnomes };
 }

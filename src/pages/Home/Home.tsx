@@ -1,5 +1,4 @@
-import { Box, Container } from '@material-ui/core';
-import PrimarySearchAppBar from '../../components/Navbar/Nabar';
+import { Box } from '@material-ui/core';
 
 import { useGnomes } from '../../hooks/useGnomes';
 import GnomesPagination from '../../components/GnomesPagination/GnomesPagination';
@@ -8,11 +7,15 @@ import { useEffect } from 'react';
 import Wrapper from '../../components/Wrapper/Wrapper';
 
 export const Home = () => {
-  const { error: gnomesError, fetchGnomes } = useGnomes();
+  const {
+    data: gnomes,
+    error: gnomesError,
+    fetchGnomes
+  } = useGnomes();
 
   useEffect(() => {
-    fetchGnomes();
-  }, [fetchGnomes]);
+    !gnomes && fetchGnomes();
+  }, [gnomes, fetchGnomes]);
 
   if (gnomesError) return <p>Error..</p>;
 

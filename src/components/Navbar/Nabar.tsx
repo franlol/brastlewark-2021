@@ -12,6 +12,7 @@ import {
 import { Favorite, MoreVert } from '@material-ui/icons';
 import navbarStyles from './navbarStyles';
 import { Search } from './Search/Search';
+import { Link } from 'react-router-dom';
 
 export default function PrimarySearchAppBar() {
   const classes = navbarStyles();
@@ -21,7 +22,6 @@ export default function PrimarySearchAppBar() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -78,8 +78,10 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Brastlewark
+          <Typography variant="h6" noWrap>
+            <Link className={classes.title} to='/'>
+              Brastlewark
+            </Link>
           </Typography>
 
           <Search />
