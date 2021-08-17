@@ -5,12 +5,16 @@ import PrimarySearchAppBar from '../../components/Navbar/Nabar';
 import { useGnomes } from '../../hooks/useGnomes';
 import GnomesPagination from '../../components/GnomesPagination/GnomesPagination';
 import Content from './Content/Content';
+import { useEffect } from 'react';
 
 export const Home = () => {
-  const { error: gnomesError } = useGnomes();
+  const { error: gnomesError, fetchGnomes } = useGnomes();
+
+  useEffect(() => {
+    fetchGnomes();
+  }, [fetchGnomes]);
 
   if (gnomesError) return <p>Error..</p>;
-
 
   return (
     <Container maxWidth="lg">

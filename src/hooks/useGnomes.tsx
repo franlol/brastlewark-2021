@@ -10,15 +10,15 @@ export const useGnomes = () => {
   const gnomes = useSelector((state: TStore) => state.gnomes);
 
   useEffect(() => {
-    !gnomes.data?.length && dispatch(getGnomesFromApi());
     dispatch(setSearchGnomesList((gnomes.data || []).map(gnome => gnome.name)));
   }, [dispatch, gnomes]);
 
+  const fetchGnomes = useCallback(() => dispatch(getGnomesFromApi()), [dispatch]);
+
   const getGnomeByName = useCallback((name: string) => {
     return (gnomes.data || []).find(gnome => gnome.name === name)
+  }, [gnomes]);
 
-  }, [gnomes]
-  )
 
-  return { ...gnomes, getGnomeByName };
+  return { ...gnomes, getGnomeByName, fetchGnomes };
 }
