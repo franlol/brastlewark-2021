@@ -8,7 +8,8 @@ const utilsInitialState: TUtilsState = {
   },
   search: {
     value: '',
-  }
+  },
+  favourites: []
 }
 
 export default utilsInitialState;

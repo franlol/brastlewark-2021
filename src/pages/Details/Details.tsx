@@ -1,7 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -14,6 +12,7 @@ import Wrapper from '../../components/Wrapper/Wrapper';
 import { useGnomes } from '../../hooks/useGnomes';
 import { Box } from '@material-ui/core';
 import detailsStyles from './detailsStyles';
+import FavouriteButton from '../../components/FavouriteButton/FavouriteButton';
 
 export const Details = () => {
   const { id } = useParams<{ id: string }>();
@@ -26,10 +25,15 @@ export const Details = () => {
   if (!gnome) return null;
 
   const renderFriends = () => {
-    return gnome.friends.map((gnomeName: string, index: number) => {
+    return gnome.friends.map((gnomeName: string, index: number, arr) => {
       const gnome = getGnomeByName(gnomeName);
+      const lastIndex = arr.length - 1;
 
-      return <><Link className={classes.link} to={`/gnome/${gnome?.id}`}>{`${gnome?.name}`}</Link>{`, `}</>
+      return (
+        <React.Fragment key={`${gnome?.name}-${index}`}>
+          <Link key={`${gnome?.name}-${index}`} className={classes.link} to={`/gnome/${gnome?.id}`}>{`${gnome?.name}`}</Link>{index !== lastIndex && ', '}
+        </React.Fragment>
+      )
     })
   }
 
@@ -72,9 +76,7 @@ export const Details = () => {
         </Box>
 
         <CardActions className={classes.button}>
-          <Button size="small" color="primary">
-            Add to favs
-          </Button>
+          <FavouriteButton gnome={gnome} />
         </CardActions>
       </Card>
     </Wrapper>

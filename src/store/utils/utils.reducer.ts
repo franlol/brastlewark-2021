@@ -10,6 +10,13 @@ const gnomesReducer = {
   },
   setSearchGnomesList: (state: TUtilsState, { payload }: PayloadAction<Array<string>>) => {
     state.gnomesList = payload;
+  },
+  addFavourite: (state: TUtilsState, { payload }: PayloadAction<number>) => {
+    if (!state.favourites.includes(payload)) state.favourites.push(payload)
+  },
+  delFavourite: (state: TUtilsState, { payload }: PayloadAction<number>) => {
+    console.log(`state.favourites.filter(id => id !== payload)`, state.favourites.filter(id => id !== payload))
+    state.favourites = state.favourites.filter(id => id !== payload);
   }
 }
 

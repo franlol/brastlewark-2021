@@ -9,6 +9,7 @@ import store from './store/store';
 import '@fontsource/roboto';
 import NoMatch from './pages/NoMatch/NoMatch';
 import Details from './pages/Details/Details';
+import Favourites from './pages/Favourites/Favourites';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -17,6 +18,7 @@ ReactDOM.render(
       <BrowserRouter >
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/favourites" component={Favourites} />
           <Route exact path="/gnome/:id" component={Details} />
           <Route exact path="*" component={NoMatch} />
         </Switch>

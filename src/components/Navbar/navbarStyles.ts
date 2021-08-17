@@ -68,5 +68,10 @@ export default makeStyles((theme: Theme) =>
         display: 'none',
       },
     },
+    favourites: {
+      color: 'white',
+      height: 24,
+      width: 24
+    }
   }),
 );

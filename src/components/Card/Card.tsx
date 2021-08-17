@@ -1,5 +1,3 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -11,6 +9,9 @@ import { TGnome } from '../../store/gnomes/gnomes.types';
 import { Link } from 'react-router-dom';
 
 import cardStyles from './cardStyles';
+import { useDispatch } from 'react-redux';
+import { addFavourite } from '../../store/utils/utils.slice';
+import FavouriteButton from '../FavouriteButton/FavouriteButton';
 
 type Props = {
   gnome: TGnome
@@ -18,6 +19,7 @@ type Props = {
 export default function MediaCard(props: Props) {
   const { gnome } = props;
   const classes = cardStyles();
+
 
   return (
     <Card className={classes.root}>
@@ -42,9 +44,7 @@ export default function MediaCard(props: Props) {
       </CardActionArea>
 
       <CardActions>
-        <Button size="small" color="primary">
-          Add to favs
-        </Button>
+        <FavouriteButton gnome={gnome} />
         <Link className={classes.link} to={`/gnome/${gnome.id}`} >
           DETAILS
         </Link>

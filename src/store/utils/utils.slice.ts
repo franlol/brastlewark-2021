@@ -9,5 +9,12 @@ const utilsSlice = createSlice({
   reducers: utilsReducer
 });
 
-export const { setPage, setSearchValue, setSearchGnomesList } = utilsSlice.actions;
+export const {
+  setPage,
+  setSearchValue,
+  setSearchGnomesList,
+  delFavourite,
+  addFavourite
+} = utilsSlice.actions;
+
 export default utilsSlice.reducer;
